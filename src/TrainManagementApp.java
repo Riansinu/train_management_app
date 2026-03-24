@@ -50,5 +50,30 @@ public class TrainManagementApp {
         System.out.println(passengerBogies);
 
         System.out.println("\nUC2 operations completed successfully...");
+
+        // ================= UC3 =================
+        System.out.println("\nUC3 - Track Unique Bogie IDs");
+        System.out.println("===================================");
+
+// Create HashSet for unique bogie IDs
+        java.util.Set<String> bogieIds = new java.util.HashSet<>();
+
+// Add bogie IDs (with duplicates intentionally)
+        bogieIds.add("BG104");
+        bogieIds.add("BG103");
+        bogieIds.add("BG102");
+        bogieIds.add("BG101");
+        bogieIds.add("BG101"); // duplicate
+        bogieIds.add("BG102"); // duplicate
+
+// Display result
+        System.out.println("\nBogie IDs After Insertion:");
+        System.out.println(bogieIds);
+
+// Note about duplicates
+        System.out.println("\nNote:");
+        System.out.println("Duplicates are automatically ignored by HashSet.");
+
+        System.out.println("\nUC3 uniqueness validation completed...");
     }
 }
