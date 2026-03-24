@@ -110,5 +110,31 @@ public class TrainManagementApp {
         System.out.println(train);
 
         System.out.println("\nUC4 ordered consist operations completed...");
+
+        // ================= UC5 =================
+        System.out.println("\nUC5 - Preserve Insertion Order of Bogies");
+        System.out.println("===================================");
+
+// Create LinkedHashSet
+        java.util.LinkedHashSet<String> formation = new java.util.LinkedHashSet<>();
+
+// Add bogies
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+
+// Add duplicate intentionally
+        formation.add("Sleeper"); // duplicate (ignored)
+
+// Display final formation
+        System.out.println("\nFinal Train Formation:");
+        System.out.println(formation);
+
+// Note
+        System.out.println("\nNote:");
+        System.out.println("LinkedHashSet preserves insertion order and removes duplicates automatically.");
+
+        System.out.println("\nUC5 formation setup completed...");
     }
 }
