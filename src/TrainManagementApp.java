@@ -136,5 +136,27 @@ public class TrainManagementApp {
         System.out.println("LinkedHashSet preserves insertion order and removes duplicates automatically.");
 
         System.out.println("\nUC5 formation setup completed...");
+
+        // ================= UC6 =================
+        System.out.println("\nUC6 - Map Bogie to Capacity (HashMap)");
+        System.out.println("===================================");
+
+// Create HashMap for bogie → capacity
+        java.util.HashMap<String, Integer> bogieCapacity = new java.util.HashMap<>();
+
+// Insert data
+        bogieCapacity.put("First Class", 24);
+        bogieCapacity.put("Cargo", 120);
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 56);
+
+// Display details
+        System.out.println("\nBogie Capacity Details:");
+
+        for (java.util.Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        System.out.println("\nUC6 bogie-capacity mapping completed...");
     }
 }
