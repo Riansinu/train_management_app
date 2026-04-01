@@ -199,5 +199,21 @@ public class TrainManagementApp {
         }
 
         System.out.println("\nUC9 grouping completed successfully...");
+
+        // ================= UC10 =================
+        System.out.println("\nUC10 - Count Total Seats in Train (reduce)");
+        System.out.println("===================================");
+
+// Reuse bogieList from UC7
+
+// Calculate total seating capacity
+        int totalSeats = bogieList.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
+
+// Display result
+        System.out.println("\nTotal Seating Capacity of Train: " + totalSeats);
+
+        System.out.println("\nUC10 aggregation completed successfully...");
     }
 }
