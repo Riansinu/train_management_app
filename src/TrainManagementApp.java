@@ -215,5 +215,35 @@ public class TrainManagementApp {
         System.out.println("\nTotal Seating Capacity of Train: " + totalSeats);
 
         System.out.println("\nUC10 aggregation completed successfully...");
+
+        // ================= UC11 =================
+        System.out.println("\nUC11 - Validate Train ID & Cargo Codes (Regex)");
+        System.out.println("===================================");
+
+// Sample inputs (you can later take user input if needed)
+        String trainId = "TRN-1234";
+        String cargoCode = "PET-AB";
+
+// Define regex patterns
+        String trainPattern = "TRN-\\d{4}";
+        String cargoPattern = "PET-[A-Z]{2}";
+
+// Compile patterns
+        java.util.regex.Pattern trainRegex = java.util.regex.Pattern.compile(trainPattern);
+        java.util.regex.Pattern cargoRegex = java.util.regex.Pattern.compile(cargoPattern);
+
+// Create matchers
+        java.util.regex.Matcher trainMatcher = trainRegex.matcher(trainId);
+        java.util.regex.Matcher cargoMatcher = cargoRegex.matcher(cargoCode);
+
+// Validate
+        boolean isTrainValid = trainMatcher.matches();
+        boolean isCargoValid = cargoMatcher.matches();
+
+// Display results
+        System.out.println("\nTrain ID: " + trainId + " → " + (isTrainValid ? "Valid" : "Invalid"));
+        System.out.println("Cargo Code: " + cargoCode + " → " + (isCargoValid ? "Valid" : "Invalid"));
+
+        System.out.println("\nUC11 validation completed successfully...");
     }
 }
