@@ -181,5 +181,23 @@ public class TrainManagementApp {
         }
 
         System.out.println("\nUC8 filtering completed successfully...");
+
+        // ================= UC9 =================
+        System.out.println("\nUC9 - Group Bogies by Type (groupingBy)");
+        System.out.println("===================================");
+
+// Reuse bogieList from UC7
+
+// Group bogies by name/type
+        Map<String, List<Bogie>> groupedBogies = bogieList.stream()
+                .collect(java.util.stream.Collectors.groupingBy(b -> b.name));
+
+// Display grouped bogies
+        System.out.println("\nGrouped Bogies:");
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        System.out.println("\nUC9 grouping completed successfully...");
     }
 }
