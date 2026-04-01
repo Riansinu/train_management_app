@@ -16,6 +16,21 @@ public class TrainManagementApp {
         public String toString() {
             return name + " (" + capacity + " seats)";
         }
+        // ===== UC12 Supporting Class =====
+        static class GoodsBogie {
+            String type;   // Cylindrical / Open / Box
+            String cargo;  // Petroleum / Coal / Grain
+
+            GoodsBogie(String type, String cargo) {
+                this.type = type;
+                this.cargo = cargo;
+            }
+
+            @Override
+            public String toString() {
+                return type + " (" + cargo + ")";
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -245,5 +260,34 @@ public class TrainManagementApp {
         System.out.println("Cargo Code: " + cargoCode + " → " + (isCargoValid ? "Valid" : "Invalid"));
 
         System.out.println("\nUC11 validation completed successfully...");
+
+        // ================= UC12 =================
+        System.out.println("\nUC12 - Safety Compliance Check for Goods Bogies");
+        System.out.println("===================================");
+
+// Create goods bogies
+        List<GoodsBogie> goodsList = new ArrayList<>();
+
+        goodsList.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsList.add(new GoodsBogie("Open", "Coal"));
+        goodsList.add(new GoodsBogie("Box", "Grain"));
+// Try breaking rule:
+// goodsList.add(new GoodsBogie("Cylindrical", "Coal")); // ❌ Unsafe
+
+// Safety check using allMatch()
+        boolean isSafe = goodsList.stream()
+                .allMatch(b ->
+                        !b.type.equals("Cylindrical") || b.cargo.equals("Petroleum")
+                );
+
+// Display result
+        System.out.println("\nGoods Bogies:");
+        for (GoodsBogie b : goodsList) {
+            System.out.println(b);
+        }
+
+        System.out.println("\nSafety Status: " + (isSafe ? "SAFE" : "UNSAFE"));
+
+        System.out.println("\nUC12 safety validation completed...");
     }
 }
