@@ -1,43 +1,41 @@
-import java.util.Arrays;
-
-public class TrainManagementApp  {
+class TrainManageApp  {
 
     public static void main(String[] args) {
 
-        System.out.println("UC19 - Binary Search for Bogie ID");
+        System.out.println("UC20 - Exception Handling During Search Operations");
         System.out.println("===================================");
 
-        // Sorted bogie IDs (IMPORTANT for binary search)
-        int[] bogieIds = {101, 102, 103, 104, 105, 106};
+        // Case 1: Empty bogie list
+        String[] bogieIds = {};   // try changing to {"BG101", "BG205"}
 
-        int target = 104;
+        String target = "BG101";
 
-        System.out.println("\nBogie IDs: " + Arrays.toString(bogieIds));
-        System.out.println("Searching for: " + target);
-
-        // Binary Search Logic
-        int left = 0;
-        int right = bogieIds.length - 1;
-        boolean found = false;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-
-            if (bogieIds[mid] == target) {
-                System.out.println("Bogie found at index: " + mid);
-                found = true;
-                break;
-            } else if (bogieIds[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
+        try {
+            // Fail-fast validation
+            if (bogieIds.length == 0) {
+                throw new IllegalStateException("No bogies available in the train. Cannot perform search.");
             }
+
+            // Linear search (after validation)
+            boolean found = false;
+
+            for (String id : bogieIds) {
+                if (id.equals(target)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                System.out.println("Bogie found: " + target);
+            } else {
+                System.out.println("Bogie not found: " + target);
+            }
+
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
-        if (!found) {
-            System.out.println("Bogie ID not found.");
-        }
-
-        System.out.println("\nBinary Search completed successfully...");
+        System.out.println("\nProgram continues safely...");
     }
 }
